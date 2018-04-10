@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <!--aframe script-->
+        <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+        
+        <!--augment reality js-->
+        <script src="ar.js"></script>
+        
+        <!--models-->
+        <a-gltf-model src="Models/shirt1/scene.gltf"></a-gltf-model>
+        <a-gltf-model src="Models/shirt2/scene.gltf"></a-gltf-model>
+        <a-gltf-model src="Models/dress1/scene.gltf"></a-gltf-model>
+        
+        <!--animation-->
+        
+    </head>
+
+    <body style='margin: 0px; overflow: hidden;'>
+        <a-scene embedded arjs='sourceType: webcam'>
+
+            <!--augmented content-->
+            <a-assets>
+                <a-asset-item id="shirt1" src="Models/shirt1/scene.gltf"></a-asset-item>
+                <a-asset-item id="shirt2" src="Models/shirt2/scene.gltf"></a-asset-item>
+                <a-asset-item id="dress1" src="Models/dress1/scene.gltf"></a-asset-item>
+            </a-assets>
+
+            <!--blue shirt-->
+            <a-marker preset='custom' type='pattern' url='luke.patt'>
+                <a-entity id="shirt1" 
+                          gltf-model="#shirt1"
+                          position="0.0 -1.0 -0.0"
+                          scale="0.998 0.814 1.016"
+                          rotation="-0.0 0.0 0.0">
+                </a-entity>
+            </a-marker>
+            
+            <!--red and white shirt-->
+            <a-marker preset='hiro'>
+                <a-entity id="shirt2" 
+                          gltf-model="#shirt2"
+                          position="-0.0 -0.10 -0.0"
+                          scale="0.0021 0.0021 0.0021"
+                          rotation="-0.0 0.0 0.0">
+                </a-entity>
+            </a-marker>
+            
+            <!--dress-->
+            <a-marker preset='custom' type='pattern' url='LQ.patt'>
+                <a-entity id="dress1"
+                          gltf-model="#dress1"
+                          position="-1.37 -0.00 -0.90"
+                          scale="0.45 0.45 0.45"
+                          rotation="0 0 0 ">
+                
+                </a-entity>
+            </a-marker>
+            
+            <!--camera entity-->
+            <a-entity camera></a-entity>
+
+        </a-scene>
+    </body>
+</html>
